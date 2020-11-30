@@ -78,7 +78,7 @@ URL: http://localhost:8081/hospedagem/<ID_DO_PRODUTO>
 Método: GET
 
 Roteiro básico de instalação
-Criar o schema "db_carrinho" na base de dados;
+Criar o schema "desafio" na base de dados;
 Definir um usuário com acesso de escrita e consulta ao novo schema;
 Baixar código fonte:
 git clone 
