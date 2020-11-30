@@ -1,0 +1,98 @@
+<header>
+  <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+      <div class="container">
+          <a class="navbar-brand" href="javascript:;" th:href="@{/}">Senior Sistema</a>
+
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+              data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+  </nav>
+</header>
+
+<main role="main">
+  <section class="my-4">
+    <div class="container">
+        <h2>Novo check in</h2>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <form method="post" #frm="ngForm" (ngSubmit)="criar(frm)">
+        <div class="form-group">
+          <label for="dataEntrada">Data/hora de entrada</label>
+          <input type="date" id="dataEntrada" name="dataEntrada"
+            class="form-control" placeholder="Data entrada"
+            [(ngModel)]="hospedagem.dataEntrada" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="dataSaida">Data/hora de saída</label>
+          <input type="date" id="dataSaida" name="dataSaida"
+            class="form-control" placeholder="Data saída"
+            [(ngModel)]="hospedagem.dataSaida" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="nome">Pessoa</label>
+          <input type="text" id="nome" name="nome"
+            class="form-control" placeholder="nome"
+            [(ngModel)]="hospedagem.nome" required/>
+        </div>
+
+        <div class="form-group">
+          <label for="adicionarVericulo">Possui Veiculo</label>
+          <input type="checkbox" id="adicionarVericulo" name="adicionarVericulo"
+            class="form-group" [(ngModel)]="hospedagem.adicionarVericulo"/>
+        </div>
+
+        <button type="submit" class="btn btn-primary"
+          [disabled]="frm.invalid">Salvar</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <div class="container">
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light text-center">
+            <tr>
+              <th>Nome</th>
+
+              <th class="w-15">documento</th>
+
+              <th class="w-15">Valor Final</th>
+
+              <th class="w-15" colspan="2">Ações</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let hospedagem of hospedagens">
+
+              <td>{{hospedagem.hospede.nome}}</td>
+
+              <td>{{hospedagem.hospede.documento}}</td>
+
+              <td>{{hospedagem.valorTotal}}</td>
+
+              <td>
+                <nav><a routerLink="/heroes">Editar</a></nav>
+              </td>
+
+              <td>
+                <nav><a routerLink="/heroes">Excluir</a></nav>
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
